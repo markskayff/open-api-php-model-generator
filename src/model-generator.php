@@ -6,6 +6,7 @@ require_once dirname(__DIR__) . "/vendor/autoload.php";
 $climate = new League\CLImate\CLImate;
 
 $climate->lightCyan("Open API PHP Model Generator")->br();
+$climate->out("For usage help do -h or --help");
 
 // ---------------------------------------------------------------
 // Define the command line arguments
@@ -40,7 +41,9 @@ $climate->arguments->add([
     'noValue' => true
   ]
 ]);
-
+// ---------------------------------------------------------------
+// If help is requested, print it
+// ---------------------------------------------------------------
 if($climate->arguments->defined('help')){
   print $climate->usage();
   exit;
@@ -52,6 +55,10 @@ try {
   // ---------------------------------------------------------------
   $climate->arguments->parse();
 
+  $ifile     = $climate->arguments->get('input');
+  $out_dir   = $climate->arguments->get('output');
+  $model_ns  = $climate->arguments->get('model-ns');
+  $overwrite = $climate->arguments->get('no-overwrite')?? false;
 
 } catch (League\CLImate\Exceptions\InvalidArgumentException $e) {
   $climate->red()->inline("Invalid Argument:  ");
