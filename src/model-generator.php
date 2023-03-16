@@ -1,5 +1,8 @@
 <?php
 require_once dirname(__DIR__) . "/vendor/autoload.php";
+
+use OpenApiPHP\ModelGenerator\Lib\ModelGenerator;
+
 // ---------------------------------------------------------------
 // Init CLIMate
 // ---------------------------------------------------------------
@@ -29,9 +32,9 @@ $climate->arguments->add([
     'description' => "Model namespace. The namespace of the Model files",
     'required' => true
   ],
-  'no-overwrite' => [
-    'longPrefix' => 'no-overwrite',
-    'description' => "Tells model generator not to overwrite existing files",
+  'overwrite' => [
+    'longPrefix' => 'overwrite',
+    'description' => "Tells model generator if overwrite existing files",
     'noValue' => true
   ],
   'help' => [
@@ -58,7 +61,12 @@ try {
   $ifile     = $climate->arguments->get('input');
   $out_dir   = $climate->arguments->get('output');
   $model_ns  = $climate->arguments->get('model-ns');
-  $overwrite = $climate->arguments->get('no-overwrite')?? false;
+  $overwrite = $climate->arguments->get('overwrite')?? false;
+
+  // ---------------------------------------------------------------
+  // Initiate the Model Generator
+  // ---------------------------------------------------------------
+  $generator = new ModelGenerator($ifile, $out_dir, $model_ns, $overwrite);
 
 } catch (League\CLImate\Exceptions\InvalidArgumentException $e) {
   $climate->red()->inline("Invalid Argument:  ");

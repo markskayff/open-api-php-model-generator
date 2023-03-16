@@ -1,16 +1,21 @@
 {
-    "name": "markskayff/open-api-php-model-generator",
-    "description": "A php tool to generate the model layer for for an API based on the Open API v3 specification",
-    "type": "project",
-    "license": "Apache License 2.0",
-    "authors": [
-        {
-            "name": "Marcos Scaianschi",
-            "email": "markskayff@gmail.com"
-        }
-    ],
+  "name": "markskayff/open-api-php-model-generator",
+  "description": "A php tool to generate the model layer for for an API based on the Open API v3 specification",
+  "type": "project",
+  "license": "Apache License 2.0",
+  "authors": [
+    {
+      "name": "Marcos Scaianschi",
+      "email": "markskayff@gmail.com"
+    }
+  ],
     "require": {
-        "nette/php-generator": "^3.6",
-        "league/climate": "^3.8"
+      "nette/php-generator": "^3.6",
+      "league/climate": "^3.8"
+    },
+    "autoload": {
+      "psr-4": {
+        "OpenApiPHP\\ModelGenerator\\": "src/"
+      }
     }
 }
