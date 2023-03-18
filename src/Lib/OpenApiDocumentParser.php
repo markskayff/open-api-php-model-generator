@@ -21,6 +21,9 @@ class OpenApiDocumentParser{
     if(!is_file($path)){
       throw new \InvalidArgumentException("Path is not a valid file.");
     }
+    // ---------------------------------------------------------------
+    // Decode the open api json document
+    // ---------------------------------------------------------------
     $this->document = json_decode(file_get_contents($path), true, JSON_THROW_ON_ERROR);
   }
 

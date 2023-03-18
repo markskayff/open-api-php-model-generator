@@ -8,8 +8,8 @@ use OpenApiPHP\ModelGenerator\Lib\ModelGenerator;
 // ---------------------------------------------------------------
 $climate = new League\CLImate\CLImate;
 
-$climate->lightCyan("Open API PHP Model Generator")->br();
-$climate->out("For usage help do -h or --help");
+$climate->lightCyan("Open API PHP Model Generator");
+$climate->out("For usage help do -h or --help")->br();
 
 // ---------------------------------------------------------------
 // Define the command line arguments
@@ -67,6 +67,8 @@ try {
   // Initiate the Model Generator
   // ---------------------------------------------------------------
   $generator = new ModelGenerator($ifile, $out_dir, $model_ns, $overwrite);
+
+  $generator->run();
 
 } catch (League\CLImate\Exceptions\InvalidArgumentException $e) {
   $climate->red()->inline("Invalid Argument:  ");

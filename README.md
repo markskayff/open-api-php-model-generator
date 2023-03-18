@@ -13,5 +13,9 @@ The Open API Specification (from now "OAS") documentation can be found here: htt
 
 About this "components" object the OAS specs say:
 
-"Holds a set of reusable objects for different aspects of the OAS. All objects defined within the components object will have no effect on the API unless they are explicitly referenced from properties outside the components object."  
+"Holds a set of reusable objects for different aspects of the OAS. All objects defined within the components object will have no effect on the API unless they are explicitly referenced from properties outside the components object."
+
+### Property validation
+
+The property validation follows the validation schema described in the [JSON Schema Validation Draft](https://json-schema.org/draft/2020-12/json-schema-validation.html#name-a-vocabulary-for-structural)
 
